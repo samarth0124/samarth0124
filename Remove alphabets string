@@ -1,0 +1,74 @@
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+ int i,j,flag=0;
+ char a[50];
+ printf("ENTER THE STRING\n");
+ gets(a);
+ for(i=0;a[i]!='\0';i++)
+{
+ if((a[i]>='a' && a[i]<='z') || (a[i]>='A' && a[i]<='Z'))
+ {
+  for(j=i;a[j]!='\0';j++)
+  { 
+   a[j]=a[j+1];
+   }
+   a[j]='\0';
+   flag=1;
+  }
+  if(flag==1)
+  {
+  i--;
+  flag=0;
+  }
+  }
+  printf("STRING AFTER REMOVING ALPHABETS = ");
+  printf("%s",a);
+ } 
+ //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ /* C program to remove all the characters 
+* from the alphanumeric string
+*/
+
+#include <stdio.h>
+#include <string.h>
+
+// This function removes all the chars
+// used in the string passed and will leave
+// only the alphanumeric characters
+int RemoveChars(char *string)
+{
+	int length=0,i=0,j=0,k=0;
+
+	length = strlen(string);
+
+	for(i=0;i<length;i++)
+	{
+		for(j=0;j<length;j++)
+		{
+			if((string[j]>='a' && string[j]<='z') || (string[j]>='A' && string[j]<='Z'))
+			{
+				for(k=j;k<length;k++)
+				{
+					string[k] = string[k+1];
+				}
+				length--;
+			}
+		}
+	}
+}
+
+// main function 
+int main()
+{
+	char string[50]={0};
+
+	printf("\nEnter the string : ");
+	gets(string);
+
+	// pass the string to the function
+	RemoveChars(string);
+	printf("Final string is : %s",string);
+	return 0;
+}
